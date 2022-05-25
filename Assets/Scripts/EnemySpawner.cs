@@ -20,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField, Range(0, 10)]
     private float _spawnRate;
+    [SerializeField, Range(0, 10)]
+    private int _maxNumberOfEnemies;
     [SerializeField] private PlanesManager _planes;
     public void StartGame()
     {
@@ -31,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        if (_target == null) return;
+        if (_target == null) { return; }
         Enemy enemy;
         enemy = Instantiate(_enemiesPrefabs[Random.Range(0, _enemiesPrefabs.Count)], _spawnPoint).GetComponent<Enemy>();
         enemy.Target = _target;

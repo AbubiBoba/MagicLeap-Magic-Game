@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.XR.MagicLeap;
+using MagicLeap.Core;
+using MagicLeapTools;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private MutantAnimatorHandler _animatorHandler;
@@ -12,6 +15,10 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0, 10)]
     private float _distanceToTarget;
     [SerializeField, Range(0, 5)] private float _speed;
+    [SerializeField] private Transform _impactSpawningTransform;
+    [SerializeField, Range(0, 10)]
+    private float _animationDelayBeforePunch;
+    [SerializeField] private GameObject _impactVFX;
     public MainTarget Target { get; set; }
     private Transform _targetTransform;
     private CharacterController _characterController;
@@ -38,34 +45,49 @@ public class Enemy : MonoBehaviour
     }
     private void Die()
     {
+
         _animatorHandler.OnDie();
         Destroy(gameObject, _animatorHandler.DyingAnimationDuration);
+    }
+    private bool winned = false;
+    private void Win()
+    {
+        StayIdle();
+        _animatorHandler.OnWin();
     }
     private void Update()
     {
         Hunt();
     }
-    private enum EnemyState { Hunting, Damaging, Died }
+    private enum EnemyState { Hunting, Damaging }
     private EnemyState _state = EnemyState.Hunting;
     private void Hunt()
     {
-        _state = IsNearToTarget();
-        switch (_state)
+        if (_targetTransform) { 
+            _state = IsNearToTarget();
+            switch (_state)
+            {
+                case EnemyState.Hunting:
+                    transform.LookAt(_targetTransform);
+                    transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, Time.deltaTime * _speed);
+                    break;
+                case EnemyState.Damaging:
+                    _animatorHandler.OnReadyToDamage();
+                    transform.LookAt(_targetTransform);
+                    TryGiveDamage(Target, _damage);
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
         {
-            case EnemyState.Hunting:
-                transform.LookAt(_targetTransform);
-                transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, Time.deltaTime * _speed);
-                break;
-            case EnemyState.Damaging:
-                _animatorHandler.OnReadyToDamage();
-                transform.LookAt(_targetTransform);
-                TryGiveDamage(Target, _damage);
-                break;
-            case EnemyState.Died:
-                Die();
-                break;
-            default:
-                break;
+            if (!winned)
+            {
+                winned = true;
+                Win();
+            }
+
         }
     }
     bool isCooldownPassed = true;
@@ -83,5 +105,18 @@ public class Enemy : MonoBehaviour
     private EnemyState IsNearToTarget()
     {
         return ((_targetTransform.position - transform.position).magnitude <= _distanceToTarget) ? EnemyState.Damaging : EnemyState.Hunting;
+    }
+    private void StayIdle()
+    {
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.isKinematic = true;
+        transform.rotation = Quaternion.identity;
+        _rigidbody.rotation = Quaternion.identity;
+        _rigidbody.isKinematic = false;
+    }
+    public void PlayImpactVFX()
+    {
+        GameObject go = Instantiate(_impactVFX, _impactSpawningTransform);
+        Destroy(go, 1f);
     }
 }

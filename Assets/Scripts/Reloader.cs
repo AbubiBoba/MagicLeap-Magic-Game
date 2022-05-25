@@ -7,7 +7,6 @@ public class Reloader : MonoBehaviour, ISpell
     [SerializeField] private EnemySpawner _enemiesSpawner;
     private void Start()
     {
-        print("Here StartOfReloader");
         _mainTargetSpawner = FindObjectOfType<MainTargetSpawner>();
         _enemiesSpawner = FindObjectOfType<EnemySpawner>();
         ReloadScene();

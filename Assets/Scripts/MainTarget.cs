@@ -24,7 +24,7 @@ public class MainTarget : MonoBehaviour
     }
     private void Die()
     {
-        if(_destructedPrefab) Instantiate(_destructedPrefab, transform, false);
+        if(_destructedPrefab) Instantiate(_destructedPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

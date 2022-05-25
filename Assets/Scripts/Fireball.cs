@@ -21,11 +21,12 @@ public class Fireball : MonoBehaviour, ISpell
     }
     private void OnCollisionEnter(Collision collision)
     {
+        
         Enemy enemy;
         if(collision.collider.gameObject.TryGetComponent<Enemy>(out enemy))
         {
             enemy.TakeDamage(_damage);
         }
-        Destroy(gameObject);
+        if (!collision.collider.gameObject.GetComponent<MagicLeapTools.HandCollider>()) { Destroy(gameObject); }
     }
 }

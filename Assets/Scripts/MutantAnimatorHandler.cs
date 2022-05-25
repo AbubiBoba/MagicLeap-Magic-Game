@@ -9,10 +9,14 @@ public class MutantAnimatorHandler : EnemyAnimatorHandler
     }
     public void OnDie()
     {
-        _animator.SetBool(isDiedAnimatorBoolParametr, true);
+        _animator.SetTrigger(isDiedAnimatorTriggerParametr);
     }
     public void OnReadyToDamage()
     {
-        _animator.SetTrigger(isNearToTargetAnimatorTriggerParametr);
+        _animator.SetBool(isNearToTargetAnimatorBoolParametr, true);
+    }
+    public void OnWin()
+    {
+        _animator.SetTrigger(isWonAnimatorTriggerParametr);
     }
 }

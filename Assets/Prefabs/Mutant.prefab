@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2182313196515282554}
   - component: {fileID: 2141920429236107229}
   - component: {fileID: 1042375435582175046}
+  - component: {fileID: -6894471561412200056}
   m_Layer: 0
   m_Name: Mutant
   m_TagString: Untagged
@@ -72,10 +73,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animatorHandler: {fileID: 2182313196515282554}
   _maxHealth: 10
-  _damage: 5
+  _damage: 3
   _attackCooldownTime: 2.2
-  _distanceToTarget: 0.4
+  _distanceToTarget: 0.7
   _speed: 1
+  _impactSpawningTransform: {fileID: 8038009718893748436}
+  _animationDelayBeforePunch: 1.09
+  _impactVFX: {fileID: 2197355562759592706, guid: ffe5773a3d81b724ca2ab3f73a4435fc,
+    type: 3}
 --- !u!54 &-5513053187455962456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -263,6 +268,20 @@ MonoBehaviour:
   OnGrabEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-6894471561412200056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375928895523824102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9081793fc708b4d48a223e3c84fda96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _punchVFX: {fileID: 2197355562759592706, guid: ffe5773a3d81b724ca2ab3f73a4435fc,
+    type: 3}
 --- !u!1 &501016782356693693
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +933,36 @@ Transform:
   m_Father: {fileID: 4186481937077314748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.6721345, y: 0.051365256, z: 3.7893257}
+--- !u!1 &3977852072176232438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8038009718893748436}
+  m_Layer: 0
+  m_Name: Knife
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8038009718893748436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3977852072176232438}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.161, y: 0.752, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8007884944295567950}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4005874570022557051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1146,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6037810121725118836}
+  - {fileID: 8038009718893748436}
   m_Father: {fileID: 6461346595046215567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.19494009, y: -20.55649, z: -87.970024}

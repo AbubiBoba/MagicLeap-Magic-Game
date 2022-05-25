@@ -1688,7 +1688,7 @@ PrefabInstance:
     - target: {fileID: 6102260234431480917, guid: 4f3fc2f13524d034db533d86c259486b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6102260234431480918, guid: 4f3fc2f13524d034db533d86c259486b,
         type: 3}
@@ -5213,13 +5213,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spellNeededGestures:
+  - _rightHandGesture: 3
+    _leftHandGesture: 6
   - _rightHandGesture: 4
     _leftHandGesture: 4
-  - _rightHandGesture: 6
+  - _rightHandGesture: 7
+    _leftHandGesture: 7
+  - _rightHandGesture: 3
+    _leftHandGesture: 3
+  - _rightHandGesture: 7
     _leftHandGesture: 6
   _spellsPrefabs:
   - {fileID: 7923781301114896059, guid: 0c8f116cb95a9cb40bbf9eec781179a1, type: 3}
   - {fileID: 6644980262664543354, guid: 1ddde7819cb62f34181ef4d637f7e070, type: 3}
+  - {fileID: 8557761892648385455, guid: 91a4a8e1ff4041344af385d017202a02, type: 3}
+  - {fileID: 4123560583527112276, guid: 0ceae8755009e0a44b5cb01e09845d9a, type: 3}
+  - {fileID: 7923781301114896059, guid: be2dce7477ec2aa4b901d51cf0e704fe, type: 3}
 --- !u!1 &1597711906
 GameObject:
   m_ObjectHideFlags: 0
@@ -5229,7 +5238,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1597711907}
-  - component: {fileID: 1597711908}
   m_Layer: 0
   m_Name: Hands
   m_TagString: Untagged
@@ -5251,20 +5259,6 @@ Transform:
   m_Father: {fileID: 340210116}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1597711908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597711906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9081793fc708b4d48a223e3c84fda96b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colliderPrefab: {fileID: 3392639389775316026, guid: 911a0d09150a81a4ba1dfc9c12860fc9,
-    type: 3}
 --- !u!1 &1619190596
 GameObject:
   m_ObjectHideFlags: 0
@@ -6550,6 +6544,7 @@ MonoBehaviour:
   - {fileID: 375928895523824102, guid: def2cc5ec27c37646bdc6b1f7921df5e, type: 3}
   _spawnPoint: {fileID: 244354351}
   _spawnRate: 5
+  _maxNumberOfEnemies: 0
   _planes: {fileID: 971512029}
 --- !u!1001 &2092670021
 PrefabInstance:

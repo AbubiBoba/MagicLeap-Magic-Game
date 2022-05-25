@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3804685858062352979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 3694725054193940115}
   - {fileID: 3694725053647806348}
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _destructedPrefab: {fileID: 4225374478182021054, guid: 18b0de362983bda4c8f51c82126f46f2,
+    type: 3}
 --- !u!1001 &3804685857114968440
 PrefabInstance:
   m_ObjectHideFlags: 0

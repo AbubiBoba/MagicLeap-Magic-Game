@@ -12,7 +12,6 @@ public class MainTargetSpawner : MonoBehaviour
     }
     private void Init()
     {
-        print("Here Init");
         Vector3 roomCentre = _planes.RoomCentre;
         _target = Instantiate(_mainTargetPrefab, roomCentre, Quaternion.identity);
         _target.GetComponent<MainTarget>().StartGame();
